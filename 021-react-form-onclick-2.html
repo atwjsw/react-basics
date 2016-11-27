@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>菜鸟教程 React 实例</title>
+    <script src="http://static.runoob.com/assets/react/react-0.14.7/build/react.min.js"></script>
+    <script src="http://static.runoob.com/assets/react/react-0.14.7/build/react-dom.min.js"></script>
+    <script src="http://static.runoob.com/assets/react/browser.min.js"></script>
+  </head>
+  <body>
+    <div id="example"></div>
+    <script type="text/babel">
+    var Content = React.createClass({
+      render: function() {
+        return  <div>
+                  <button onClick = {this.props.updateStateProp}>点我</button>
+                  <h4>{this.props.myDataProp}</h4>
+               </div>
+      }
+    });
+    var HelloMessage = React.createClass({
+      getInitialState: function() {
+        return {value: 'Hello Runoob!'};
+      },
+      handleChange: function(event) {
+        this.setState({value: '菜鸟教程'})
+      },
+      render: function() {
+        var value = this.state.value;
+        return <div>
+                <Content myDataProp = {value} 
+                  updateStateProp = {this.handleChange}></Content>
+               </div>;
+      }
+    });
+    ReactDOM.render(
+      <HelloMessage />,
+      document.getElementById('example')
+    );
+    </script>
+  </body>
+</html>
+
+<!-- 当你需要从子组件中更新父组件的 state 时，你需要在父组件通过创建事件句柄 (handleChange) ，并作为 prop (updateStateProp) 传递到你的子组件上。 -->

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>菜鸟教程 React 实例</title>
+    <script src="http://static.runoob.com/assets/react/react-0.14.7/build/react.js"></script>
+    <script src="http://static.runoob.com/assets/react/react-0.14.7/build/react-dom.js"></script>
+    <script src="http://static.runoob.com/assets/react/browser.min.js"></script>
+  </head>
+  <body>
+	  <div id="example"></div>
+    <script type="text/babel">
+    //var title = "菜鸟教程";
+    var title = 123;
+    var title;
+    var MyTitle = React.createClass({
+      propTypes: {
+        title: React.PropTypes.string.isRequired,
+      },
+
+      render: function() {
+         return <h1> {this.props.title} </h1>;
+       }
+    });
+    ReactDOM.render(
+        <MyTitle title={title} />,
+        document.getElementById('example')
+    );
+    </script>
+  </body>
+</html>
+
+<!-- - 以下实例创建一个 Mytitle 组件，属性 title 是必须的且是字符串，如果是一个数字则会报错 ：
+- 如果 title 使用数字变量，控制台会出现以下错误信息：
+react.js:18794 Warning: Failed propType: Invalid prop `title` of type `number` supplied to `MyTitle`, expected `string`. -->

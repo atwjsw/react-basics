@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>菜鸟教程 React 实例</title>
+    <script src="http://static.runoob.com/assets/react/react-0.14.7/build/react.min.js"></script>
+    <script src="http://static.runoob.com/assets/react/react-0.14.7/build/react-dom.min.js"></script>
+    <script src="http://static.runoob.com/assets/react/browser.min.js"></script>
+  </head>
+  <body>
+    <div id="example"></div>
+    <script type="text/babel">
+    var HelloMessage = React.createClass({
+      getInitialState: function() {
+        return {value: 'Hello Runoob!'};
+      },
+      handleChange: function(event) {
+        this.setState({value: event.target.value});
+      },
+      render: function() {
+        var value = this.state.value;
+        return <div>
+                <input type="text" value={value} onChange={this.handleChange} /> 
+                <h4>{value}</h4>
+               </div>;
+      }
+    });
+    ReactDOM.render(
+      <HelloMessage />,
+      document.getElementById('example')
+    );
+    </script>
+  </body>
+</html>
+
+<!-- 1. 在实例中我们设置了输入框 input 值value = {this.state.data}。在输入框值发生变化时我们可以更新 state。我们可以使用 onChange 事件来监听 input 的变化，并修改 state。
+
+2. 上面的代码将渲染出一个值为 Hello Runoob! 的 input 元素，并通过 onChange 事件响应更新用户输入的值。 -->
